@@ -5,11 +5,12 @@ import authRouter from './routes/auth.route.js'
 import userRouter from './routes/user.route.js'
 import postRoutes from './routes/post.route.js'
 import connectToMongo from './db/connectToMongo.js';
+import notificationRoutes from './routes/notification.route.js'
 import {v2 as coudinary} from 'cloudinary';
 
 dotenv.config();
 coudinary.config({
-    cloud_name:process.env.CLOUDINARY_NAME,
+    cloud_name:process.env.CLOUDINARY_CLOUD_NAME,
     api_key:process.env.CLOUDINARY_API_KEY,
     api_secret:process.env.CLOUDINARY_API_SECRET,
     secure:true
@@ -25,6 +26,8 @@ app.use(express.urlencoded({extended:true}));
 app.use("/api/auth",authRouter);
 app.use("/api/users",userRouter);
 app.use("/api/posts",postRoutes);
+app.use("/api/notifications", notificationRoutes);
+// app.use("/api/")
 
 app.listen(port,()=>{
     connectToMongo();
