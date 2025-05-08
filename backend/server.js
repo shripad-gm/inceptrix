@@ -14,7 +14,7 @@ coudinary.config({
     api_secret:process.env.CLOUDINARY_API_SECRET,
     secure:true
 });
-const app=express();
+const app=express({limit:'100kb'});
 
 const port=process.env.PORT || 5000;
 

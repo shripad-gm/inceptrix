@@ -20,6 +20,14 @@ const postSchema = new mongoose.Schema(
 				ref: "User",
 			},
 		],
+        sos:{
+            type: Boolean,
+            default: false,
+        },
+        location: {
+            type: String,
+            required: true,
+        },
 		comments: [
 			{
 				text: {
