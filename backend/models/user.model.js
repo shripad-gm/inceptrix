@@ -21,6 +21,11 @@ const userSchema = new mongoose.Schema(
 			required: true,
 			unique: true,
 		},
+        phonenumber:{
+            type: String,
+            required: true,
+            unique: true,
+        },
 		followers: [
 			{
 				type: mongoose.Schema.Types.ObjectId,
