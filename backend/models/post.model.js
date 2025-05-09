@@ -1,4 +1,3 @@
-
 import mongoose from "mongoose";
 
 const postSchema = new mongoose.Schema(
@@ -10,6 +9,9 @@ const postSchema = new mongoose.Schema(
 		},
 		text: {
 			type: String,
+		},
+			imgPublicId: {
+			type: String, // <-- Needed to delete from Cloudinary
 		},
 		img: {
 			type: String,

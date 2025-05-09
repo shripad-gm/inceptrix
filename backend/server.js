@@ -4,10 +4,11 @@ import cookieparser from 'cookie-parser';
 import authRouter from './routes/auth.route.js'
 import userRouter from './routes/user.route.js'
 import postRoutes from './routes/post.route.js'
+import adminRoutes from './routes/adminContent.route.js'
 import connectToMongo from './db/connectToMongo.js';
 import notificationRoutes from './routes/notification.route.js'
 import {v2 as coudinary} from 'cloudinary';
-
+import cors from 'cors';
 dotenv.config();
 coudinary.config({
     cloud_name:process.env.CLOUDINARY_CLOUD_NAME,
@@ -15,8 +16,8 @@ coudinary.config({
     api_secret:process.env.CLOUDINARY_API_SECRET,
     secure:true
 });
-const app=express({limit:'100kb'});
-
+const app=express({limit:'5mb'});
+app.use(cors());
 const port=process.env.PORT || 5000;
 
 app.use(cookieparser());
@@ -27,7 +28,7 @@ app.use("/api/auth",authRouter);
 app.use("/api/users",userRouter);
 app.use("/api/posts",postRoutes);
 app.use("/api/notifications", notificationRoutes);
-// app.use("/api/")
+app.use("/api/admin",adminRoutes)
 
 app.listen(port,()=>{
     connectToMongo();

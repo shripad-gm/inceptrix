@@ -17,3 +17,6 @@ const adminContentSchema = new mongoose.Schema(
 	},
     { timestamps: true }
 );
+
+const AdminContent = mongoose.model("AdminContent", adminContentSchema);
+export default AdminContent;
